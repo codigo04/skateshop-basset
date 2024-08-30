@@ -8,9 +8,6 @@ import java.math.BigDecimal;
 @Table(name = "items_orden")
 public class ItemsOrden {
 
-
-
-
     @EmbeddedId
     private OrdenItemPK idPk;
 

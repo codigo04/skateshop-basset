@@ -2,10 +2,13 @@ package com.basset_back.infraestructure.entity;
 
 
 import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "items_carrito")
 public class ItemsCarrito {
+
+
 
     @EmbeddedId
     private CarritosItemPK idPk;

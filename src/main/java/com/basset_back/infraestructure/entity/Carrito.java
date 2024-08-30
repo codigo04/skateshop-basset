@@ -32,5 +32,43 @@ public class Carrito {
     private List<ItemsCarrito> itemsCarritos;
 
 
+    public Long getIdCarrito() {
+        return idCarrito;
+    }
 
+    public void setIdCarrito(Long idCarrito) {
+        this.idCarrito = idCarrito;
+    }
+
+    public Long getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Timestamp getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Timestamp fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public List<ItemsCarrito> getItemsCarritos() {
+        return itemsCarritos;
+    }
+
+    public void setItemsCarritos(List<ItemsCarrito> itemsCarritos) {
+        this.itemsCarritos = itemsCarritos;
+    }
 }
