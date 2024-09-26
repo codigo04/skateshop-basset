@@ -9,7 +9,7 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {RoleMapper.class})
 public interface UserMapper {
     @Mappings({
             @Mapping(source = "idUsuario",target = "userId"),
@@ -18,7 +18,8 @@ public interface UserMapper {
             @Mapping(source = "gmail",target = "gmail"),
             @Mapping(source = "contrasena",target = "password"),
             @Mapping(source = "tipoDoc",target = "typeDoc"),
-            @Mapping(source = "numeroDoc",target = "numberDoc")
+            @Mapping(source = "numeroDoc",target = "numberDoc"),
+            @Mapping(source = "rolesUsuario",target = "assginedRoles")
     })
     User toUser(Usuario usuario);
     List<User> toUser(List<Usuario> usuarios);

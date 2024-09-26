@@ -7,8 +7,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductServOut {
+   List<Product> searchProducts();
     Optional<Product>  createProduct(Product product);
     Optional<Product> updateProduct(Product product);
+    Optional<Product> updateCategoriProductDefault(long productId);
     void deleteProduct(String nameProduct);
     Optional<Product> searchProductByName(String nameProduct);
     Optional<List<Product>> searchProductByCategory(String nameCategory);

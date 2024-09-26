@@ -14,8 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
+
+
 
 @Service
 public class UserAdapter implements UserServOut {
@@ -32,6 +35,15 @@ public class UserAdapter implements UserServOut {
     @Autowired
     UserMapper userMapper;
 
+
+    @Override
+    public List<User> searchUsers() {
+     List<Usuario> usuarios = (List<Usuario>) usuarioDao.findAll();
+
+
+
+        return  userMapper.toUser(usuarios);
+    }
 
     @Override
     public Optional<User> createUser(User user) {
@@ -56,8 +68,8 @@ public class UserAdapter implements UserServOut {
     }
 
     @Override
-    public Optional<User> updateUser(User user) {
-        Optional<Usuario> usuario = usuarioDao.findByNumeroDoc(user.getNumberDoc());
+    public Optional<User> updateUser(long numDoc,User user) {
+        Optional<Usuario> usuario = usuarioDao.findByNumeroDoc(String.valueOf(numDoc));
 
 
         if (usuario.isPresent()) {
@@ -76,6 +88,9 @@ public class UserAdapter implements UserServOut {
     @Override
     public Optional<User> searchUserByNombre(String nombre) {
         Optional<Usuario> usuario = usuarioDao.findByNombre(nombre);
+
+
+
         return usuario.map(us -> userMapper.toUser(us));
     }
 

@@ -8,11 +8,8 @@ import org.springframework.data.annotation.Id;
 @Table(name = "items_carrito")
 public class ItemsCarrito {
 
-
-
     @EmbeddedId
     private CarritosItemPK idPk;
-
 
     private Integer cantidad;
 
@@ -27,4 +24,36 @@ public class ItemsCarrito {
     @JoinColumn(name = "producto_id", insertable = false, updatable = false)
     private  Producto producto;
 
+    public CarritosItemPK getIdPk() {
+        return idPk;
+    }
+
+    public void setIdPk(CarritosItemPK idPk) {
+        this.idPk = idPk;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+
+
+    public Carrito getCarrito() {
+        return carrito;
+    }
+
+    public void setCarrito(Carrito carrito) {
+        this.carrito = carrito;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
 }

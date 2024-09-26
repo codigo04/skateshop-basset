@@ -26,5 +26,43 @@ public class ItemsOrden {
     @JoinColumn(name ="id_orden", insertable = false, updatable = false)
     private Orden orden;
 
+    public OrdenItemPK getIdPk() {
+        return idPk;
+    }
 
+    public void setIdPk(OrdenItemPK idPk) {
+        this.idPk = idPk;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public BigDecimal getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    public Orden getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Orden orden) {
+        this.orden = orden;
+    }
 }

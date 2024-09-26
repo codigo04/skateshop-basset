@@ -7,6 +7,7 @@ import com.basset_back.infraestructure.entity.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,6 +18,15 @@ public class UserServImpl implements UserServIn {
     UserServOut userServOut;
 
 
+    @Override
+    public List<User> searchUsers() {
+        return userServOut.searchUsers();
+    }
+
+    @Override
+    public Optional<User> createUser(User user) {
+        return userServOut.createUser(user);
+    }
 
     @Override
     public void deleteUser(String dniUser) {
@@ -27,15 +37,16 @@ public class UserServImpl implements UserServIn {
 
 
     @Override
-    public Optional<User> updateUser(User user) {
+    public Optional<User> updateUser(long numDoc,User user) {
 
-        return Optional.of(userServOut.updateUser(user).get());
+        return Optional.of(userServOut.updateUser(numDoc,user).get());
     }
 
     @Override
     public Optional<User> searchUserByNombre(String nombre) {
+        Optional<User> user =   userServOut.searchUserByNombre(nombre);
 
-        return Optional.of(userServOut.searchUserByNombre(nombre).get());
+        return user;
     }
 
     @Override

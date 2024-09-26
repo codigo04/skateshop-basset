@@ -6,7 +6,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ProductServIn {
+
+    List<Product> searchProducts();
     Optional<Product>  createProduct(Product product);
+    Optional<Product> updateCategoriProductDefault(long productId);
     Optional<Product> updateProduct(Product product);
     void deleteProduct(String nameProduct);
     Optional<Product> searchProductByName(String nameProduct);

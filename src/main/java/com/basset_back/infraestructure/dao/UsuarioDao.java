@@ -10,5 +10,5 @@ public interface UsuarioDao extends CrudRepository<Usuario,Long> {
     Optional<Usuario> findByNombre(String nombre);
     Optional<Usuario> findByNumeroDoc(String documento);
     void deleteByNumeroDoc(String documento);  //falta implementar
-    boolean existsByNumeroDoc(String documento); //falta implementar
+    boolean existsByNumeroDoc(String document); //falta implementar
 }

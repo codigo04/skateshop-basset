@@ -7,6 +7,7 @@ import com.basset_back.infraestructure.dao.ProductoDao;
 import com.basset_back.infraestructure.entity.Categoria;
 import com.basset_back.infraestructure.entity.Producto;
 import com.basset_back.infraestructure.mapper.ProductMapper;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,15 @@ public class ProductAdapter implements ProductServOut {
 
     @Autowired
     CategoriaDao categoriaDao;
+
+
+    @Override
+    public List<Product> searchProducts() {
+       List<Producto> productos = (List<Producto>) productoDao.findAll();
+
+        return productMapper.toProductList(productos);
+    }
+
 
 
     @Override
@@ -48,7 +58,6 @@ public class ProductAdapter implements ProductServOut {
     public Optional<Product> updateProduct(Product product) {
         Optional<Producto> productoExist = productoDao.findByNombre(product.getName());
 
-
         if (!productoExist.isPresent()) {
             return Optional.empty();
         }
@@ -64,6 +73,26 @@ public class ProductAdapter implements ProductServOut {
         return Optional.of(productMapper.toProduct(productoDao.save(productoNew)));
     }
 
+
+
+    @Override
+    public Optional<Product> updateCategoriProductDefault(long productId) {
+     long categoriaDefault = 7L;
+
+         Optional<Producto> productoExist =  productoDao.findById(productId);
+
+           if (productoExist.isPresent()) {
+               Producto producto = productoExist.get();
+               producto.setCategoriaId(categoriaDefault);
+               productoDao.save(producto);
+               return Optional.of(productMapper.toProduct(producto));
+           }else
+
+
+
+        return Optional.empty();
+    }
+
     @Override
     public Optional<Product> increaseStock(Long productoId, int cantidad) {
         Optional<Producto> productoExist = productoDao.findById(productoId);
@@ -71,10 +100,7 @@ public class ProductAdapter implements ProductServOut {
         if (!productoExist.isPresent()) return Optional.empty();
         Producto producto = productoExist.get();
 
-
         producto.setStock(producto.getStock()  + cantidad);
-
-
 
         return Optional.of(productMapper.toProduct(productoDao.save(producto)));
     }
@@ -94,6 +120,7 @@ public class ProductAdapter implements ProductServOut {
         return Optional.of(productMapper.toProduct(productoDao.save(producto)));
     }
 
+    @Transactional
     @Override
     public void deleteProduct(String nameProduct) {
 

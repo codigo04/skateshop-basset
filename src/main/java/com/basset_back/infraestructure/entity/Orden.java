@@ -34,11 +34,75 @@ public class Orden {
     private Usuario usuario;
 
    //ordenes
-    @OneToMany(mappedBy = "orden")
+    @OneToMany(mappedBy = "orden", cascade = CascadeType.ALL)
     private List<ItemsOrden> itemsOrdens;
 
     //ordenes pago
     @OneToMany(mappedBy = "orden")
     private List<Pago> pagos;
 
+
+    public Long getIdOrden() {
+        return idOrden;
+    }
+
+    public void setIdOrden(Long idOrden) {
+        this.idOrden = idOrden;
+    }
+
+    public Long getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(Long idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public BigDecimal getPrecioTotal() {
+        return precioTotal;
+    }
+
+    public void setPrecioTotal(BigDecimal precioTotal) {
+        this.precioTotal = precioTotal;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public Timestamp getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(Timestamp fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public List<ItemsOrden> getItemsOrdens() {
+        return itemsOrdens;
+    }
+
+    public void setItemsOrdens(List<ItemsOrden> itemsOrdens) {
+        this.itemsOrdens = itemsOrdens;
+    }
+
+    public List<Pago> getPagos() {
+        return pagos;
+    }
+
+    public void setPagos(List<Pago> pagos) {
+        this.pagos = pagos;
+    }
 }

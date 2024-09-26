@@ -29,4 +29,6 @@ public class AuthenticationController {
         return   ResponseEntity.ok(authenticationServ.singUpAdmin(singUpRequest));
     }
 
+
+
 }

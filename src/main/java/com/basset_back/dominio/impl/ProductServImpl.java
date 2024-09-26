@@ -16,11 +16,26 @@ public class ProductServImpl implements ProductServIn {
     ProductServOut productServOut;
 
 
+
+    @Override
+    public List<Product> searchProducts() {
+        return productServOut.searchProducts();
+    }
+
     @Override
     public Optional<Product> createProduct(Product product) {
 
 
         return productServOut.createProduct(product);
+    }
+
+
+    //falta implementar
+    @Override
+    public Optional<Product> updateCategoriProductDefault(long productId) {
+             productServOut.updateCategoriProductDefault(productId);
+
+        return  productServOut.updateCategoriProductDefault(productId);
     }
 
     @Override
