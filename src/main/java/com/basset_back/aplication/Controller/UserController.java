@@ -24,7 +24,7 @@ public class UserController {
     public void updateUser(@PathVariable("numDoc")long numDoc, @RequestBody  User user){
 
         userServIn.updateUser(numDoc,user);
-    };
+    }
 
 
     @GetMapping("/search/users")
